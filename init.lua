@@ -630,7 +630,7 @@ require('lazy').setup({
 
       local gopls = servers['gopls']
       gopls.capabilities = vim.tbl_deep_extend('force', {}, capabilities, gopls.capabilities or {})
-      require('lspconfig')['rust_analyzer'].setup(gopls)
+      require('lspconfig')['gopls'].setup(gopls)
 
       require('mason-lspconfig').setup {
         handlers = {
