@@ -120,6 +120,9 @@ vim.opt.clipboard = 'unnamedplus'
 -- Enable break indent
 vim.opt.breakindent = true
 
+-- Line break to avoid cutting words
+vim.opt.linebreak = true
+
 -- Save undo history
 vim.opt.undofile = true
 
