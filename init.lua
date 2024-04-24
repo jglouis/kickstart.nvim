@@ -744,6 +744,19 @@ require('lazy').setup({
           documentation = cmp.config.window.bordered(),
         },
 
+        -- I had to temove the 'menu' portion from the comp pop up because
+        -- it was taking too much space.
+        formatting = {
+          fields = { 'abbr', 'kind' },
+          expandable_indicator = false,
+          format = function(_, vim_item)
+            -- vim_item.abbr = string.sub(vim_item.abbr, 1, 10)
+            vim_item.menu = ''
+            -- vim_item.kind = string.sub(vim_item.kind, 1, 10)
+            return vim_item
+          end,
+        },
+
         -- For an understanding of why these mappings were
         -- chosen, you will need to read `:help ins-completion`
         --
