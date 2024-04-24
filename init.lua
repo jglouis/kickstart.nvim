@@ -614,11 +614,23 @@ require('lazy').setup({
 
       -- You can add other tools here that you want Mason to install
       -- for you, so that they are available from within Neovim.
-      local ensure_installed = vim.tbl_keys(servers or {})
+      -- local ensure_installed = vim.tbl_keys(servers or {})
+      local ensure_installed = vim.tbl_keys {}
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
+
+      -- Do not rely on Mason for installing servers.
+      -- It always get me into trouble when the language server is not the same version
+      -- as the corresponding compiler.
+      local rust_analyzer = servers['rust_analyzer']
+      rust_analyzer.capabilities = vim.tbl_deep_extend('force', {}, capabilities, rust_analyzer.capabilities or {})
+      require('lspconfig')['rust_analyzer'].setup(rust_analyzer)
+
+      local gopls = servers['gopls']
+      gopls.capabilities = vim.tbl_deep_extend('force', {}, capabilities, gopls.capabilities or {})
+      require('lspconfig')['rust_analyzer'].setup(gopls)
 
       require('mason-lspconfig').setup {
         handlers = {
