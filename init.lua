@@ -206,6 +206,14 @@ vim.api.nvim_create_autocmd('TextYankPost', {
   end,
 })
 
+-- remap jump to command
+vim.api.nvim_create_autocmd({ 'FileType' }, {
+  pattern = { 'help' },
+  callback = function(opts)
+    vim.keymap.set('n', 'gd', '<C-]>', { silent = true, buffer = opts.buf })
+  end,
+})
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
