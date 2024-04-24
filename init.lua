@@ -882,6 +882,10 @@ require('lazy').setup({
       skip_confirm_for_simple_edits = true,
     },
     dependencies = { 'nvim-tree/nvim-web-devicons' },
+    config = function()
+      require('oil').setup()
+      vim.keymap.set('n', '-', '<CMD>Oil<CR>', { desc = 'Open parent directory' })
+    end,
   },
 
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
