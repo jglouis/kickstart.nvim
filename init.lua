@@ -120,6 +120,9 @@ vim.opt.clipboard = 'unnamedplus'
 -- Enable break indent
 vim.opt.breakindent = true
 
+-- Set tab size
+vim.opt.tabstop = 4
+
 -- Line break to avoid cutting words
 vim.opt.linebreak = true
 
