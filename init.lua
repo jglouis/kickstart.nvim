@@ -412,6 +412,9 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>ss', builtin.git_status, { desc = '[S]earch [S]tatus' })
       vim.keymap.set('n', '<leader>st', builtin.git_stash, { desc = '[S]earch [S]tash' })
 
+      -- Treesitter
+      vim.keymap.set('n', '<leader>ts', builtin.treesitter, { desc = '[T]ree[S]itter' })
+
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
