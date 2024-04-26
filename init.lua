@@ -310,11 +310,18 @@ require('lazy').setup({
         ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
         ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
         ['<leader>t'] = { name = '[T]oggle', _ = 'which_key_ignore' },
-        ['<leader>h'] = { name = 'Git [H]unk', _ = 'which_key_ignore' },
+        ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
+        ['<leader>gh'] = { name = '[G]it [H]unk', _ = 'which_key_ignore' },
+        ['<leader>gt'] = { name = '[G]it [T]oggle', _ = 'which_key_ignore' },
+        ['<leader>ga'] = { name = '[G]it [A]dd', _ = 'which_key_ignore' },
+        ['<leader>gc'] = { name = '[G]it [C]ommit', _ = 'which_key_ignore' },
+        ['<leader>gs'] = { name = '[G]it [S]earch', _ = 'which_key_ignore' },
       }
       -- visual mode
       require('which-key').register({
-        ['<leader>h'] = { 'Git [H]unk' },
+        ['<leader>g'] = { name = '[G]it', _ = 'which_key_ignore' },
+        ['<leader>gh'] = { 'Git [H]unk' },
+        ['<leader>gt'] = { 'Git [T]oggle' },
       }, { mode = 'v' })
     end,
   },
@@ -407,10 +414,10 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
       -- Git integration
-      vim.keymap.set('n', '<leader>sc', builtin.git_commits, { desc = '[S]earch [C]ommits' })
-      vim.keymap.set('n', '<leader>sb', builtin.git_branches, { desc = '[S]earch [B]ranches' })
-      vim.keymap.set('n', '<leader>ss', builtin.git_status, { desc = '[S]earch [S]tatus' })
-      vim.keymap.set('n', '<leader>st', builtin.git_stash, { desc = '[S]earch S[t]ash' })
+      vim.keymap.set('n', '<leader>gcs', builtin.git_commits, { desc = '[G]it [C]ommits [S]earch' })
+      vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc = '[G]it [B]ranches' })
+      vim.keymap.set('n', '<leader>gss', builtin.git_status, { desc = '[G]it [S]earch [S]tatus' })
+      vim.keymap.set('n', '<leader>gst', builtin.git_stash, { desc = '[G]it [S]earch S[t]ash' })
 
       -- Treesitter
       vim.keymap.set('n', '<leader>ts', builtin.treesitter, { desc = '[T]ree[S]itter' })
@@ -951,6 +958,15 @@ require('lazy').setup({
   {
     'tpope/vim-fugitive',
     opt = {},
+    config = function()
+      vim.keymap.set('n', '<leader>gg', ':Git<CR>', { desc = '[G]it [G]ood status' })
+      vim.keymap.set('n', '<leader>gd', ':Git diff<CR>', { desc = '[G]it [D]iff with HEAD' })
+      vim.keymap.set('n', '<leader>gm', ':Git mergetool<CR>', { desc = '[G]it [M]ergeTool' })
+      vim.keymap.set('n', '<leader>gB', ':Git blame<CR>', { desc = '[G]it [B]lame' })
+      vim.keymap.set('n', '<leader>gaa', ':Git add --all<CR>', { desc = '[G]it [A]dd [A]ll' })
+      vim.keymap.set('n', '<leader>gac', ':Git add %<CR>', { desc = '[G]it [A]dd [C]urrent file' })
+      vim.keymap.set('n', '<leader>gca', ':Git commit --all<CR>', { desc = '[G]it [C]ommit [A]ll' })
+    end,
   },
   {
     'stevearc/oil.nvim',
