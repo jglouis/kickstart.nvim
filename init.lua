@@ -305,7 +305,7 @@ require('lazy').setup({
       -- Document existing key chains
       require('which-key').register {
         ['<leader>c'] = { name = '[C]ode', _ = 'which_key_ignore' },
-        ['<leader>d'] = { name = '[D]ocument', _ = 'which_key_ignore' },
+        ['<leader>d'] = { name = '[D]ap', _ = 'which_key_ignore' },
         ['<leader>r'] = { name = '[R]ename', _ = 'which_key_ignore' },
         ['<leader>s'] = { name = '[S]earch', _ = 'which_key_ignore' },
         ['<leader>w'] = { name = '[W]orkspace', _ = 'which_key_ignore' },
@@ -524,7 +524,7 @@ require('lazy').setup({
 
           -- Fuzzy find all the symbols in your current document.
           --  Symbols are things like variables, functions, types, etc.
-          map('<leader>ds', require('telescope.builtin').lsp_document_symbols, '[D]ocument [S]ymbols')
+          map('<leader>sy', require('telescope.builtin').lsp_document_symbols, '[S]earch S[y]mbols')
 
           -- Fuzzy find all the symbols in your current workspace.
           --  Similar to document symbols, except searches over your entire project.
@@ -653,9 +653,9 @@ require('lazy').setup({
       -- Do not rely on Mason for installing servers.
       -- It always get me into trouble when the language server is not the same version
       -- as the corresponding compiler.
-      local rust_analyzer = servers['rust_analyzer']
-      rust_analyzer.capabilities = vim.tbl_deep_extend('force', {}, capabilities, rust_analyzer.capabilities or {})
-      require('lspconfig')['rust_analyzer'].setup(rust_analyzer)
+      -- local rust_analyzer = servers['rust_analyzer']
+      -- rust_analyzer.capabilities = vim.tbl_deep_extend('force', {}, capabilities, rust_analyzer.capabilities or {})
+      -- require('lspconfig')['rust_analyzer'].setup(rust_analyzer)
 
       vim.keymap.set('n', '<leader>cr', ':!cargo run<CR>', { desc = '[C]argo [R]un' })
       vim.keymap.set('n', '<leader>ct', ':!cargo test<CR>', { desc = '[C]argo [T]est' })
@@ -1021,7 +1021,41 @@ require('lazy').setup({
       require('telescope').load_extension 'undo'
     end,
   },
-
+  {
+    'mrcjkb/rustaceanvim',
+    version = '^4', -- Recommended
+    lazy = false, -- This plugin is already lazy
+  },
+  {
+    'mfussenegger/nvim-dap',
+    dependencies = 'rustaceanvim',
+    config = function()
+      vim.keymap.set('n', '<leader>dt', ':DapToggleBreakpoint<CR>', { desc = '[D]ap [T]oggle Breakpoint' })
+      vim.keymap.set('n', '<leader>dx', ':DapTerminate<CR>', { desc = '[D]ap [X]Terminate' })
+      vim.keymap.set('n', '<leader>dc', ':DapContinue<CR>', { desc = '[D]ap [C]ontinue' })
+      vim.keymap.set('n', '<leader>do', ':DapStepOver<CR>', { desc = '[D]ap Step [O]ver' })
+      vim.keymap.set('n', '<leader>dO', ':DapStepOut<CR>', { desc = '[D]ap Step [O]ut' })
+      vim.keymap.set('n', '<leader>di', ':DapStepInto<CR>', { desc = '[D]ap Step [I]nto' })
+      vim.keymap.set('n', '<leader>dd', ':RustLsp debuggables<CR>', { desc = 'RustLsp [D]ebuggables' })
+    end,
+  },
+  {
+    'rcarriga/nvim-dap-ui',
+    dependencies = { 'mfussenegger/nvim-dap', 'nvim-neotest/nvim-nio' },
+    config = function()
+      require('dapui').setup()
+      local dap, dapui = require 'dap', require 'dapui'
+      dap.listeners.after.event_initialized['dapui_config'] = function()
+        dapui.open()
+      end
+      dap.listeners.before.event_terminated['dapui_config'] = function()
+        dapui.close()
+      end
+      dap.listeners.before.event_exited['dapui_config'] = function()
+        dapui.close()
+      end
+    end,
+  },
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
