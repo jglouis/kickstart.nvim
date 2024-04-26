@@ -966,6 +966,8 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>gaa', ':Git add --all<CR>', { desc = '[G]it [A]dd [A]ll' })
       vim.keymap.set('n', '<leader>gac', ':Git add %<CR>', { desc = '[G]it [A]dd [C]urrent file' })
       vim.keymap.set('n', '<leader>gca', ':Git commit --all<CR>', { desc = '[G]it [C]ommit [A]ll' })
+      vim.keymap.set('n', '<leader>gp', ':Git push<CR>', { desc = '[G]it [P]ush' })
+      vim.keymap.set('n', '<leader>gP', ':Git pull<CR>', { desc = '[G]it [P]ull' })
     end,
   },
   {
