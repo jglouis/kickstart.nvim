@@ -415,9 +415,6 @@ require('lazy').setup({
       -- Treesitter
       vim.keymap.set('n', '<leader>ts', builtin.treesitter, { desc = '[T]ree[S]itter' })
 
-      vim.keymap.set('n', '<leader>cr', ':!cargo run<CR>', { desc = '[C]argo [R]un' })
-      vim.keymap.set('n', '<leader>ct', ':!cargo test<CR>', { desc = '[C]argo [T]est' })
-
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
         -- You can pass additional configuration to Telescope to change the theme, layout, etc.
@@ -652,6 +649,9 @@ require('lazy').setup({
       local rust_analyzer = servers['rust_analyzer']
       rust_analyzer.capabilities = vim.tbl_deep_extend('force', {}, capabilities, rust_analyzer.capabilities or {})
       require('lspconfig')['rust_analyzer'].setup(rust_analyzer)
+
+      vim.keymap.set('n', '<leader>cr', ':!cargo run<CR>', { desc = '[C]argo [R]un' })
+      vim.keymap.set('n', '<leader>ct', ':!cargo test<CR>', { desc = '[C]argo [T]est' })
 
       local gopls = servers['gopls']
       gopls.capabilities = vim.tbl_deep_extend('force', {}, capabilities, gopls.capabilities or {})
