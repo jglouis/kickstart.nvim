@@ -410,7 +410,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sc', builtin.git_commits, { desc = '[S]earch [C]ommits' })
       vim.keymap.set('n', '<leader>sb', builtin.git_branches, { desc = '[S]earch [B]ranches' })
       vim.keymap.set('n', '<leader>ss', builtin.git_status, { desc = '[S]earch [S]tatus' })
-      vim.keymap.set('n', '<leader>st', builtin.git_stash, { desc = '[S]earch [S]tash' })
+      vim.keymap.set('n', '<leader>st', builtin.git_stash, { desc = '[S]earch S[t]ash' })
 
       -- Treesitter
       vim.keymap.set('n', '<leader>ts', builtin.treesitter, { desc = '[T]ree[S]itter' })
