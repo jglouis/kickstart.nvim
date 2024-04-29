@@ -90,6 +90,12 @@ P.S. You can delete this when you're done too. It's your config now! :)
 vim.g.mapleader = ' '
 vim.g.maplocalleader = ' '
 
+-- Buffer manipulation
+vim.keymap.set('n', '<leader>bn', ':new<CR>', { desc = '[B]uffer [N]ew' })
+vim.keymap.set('n', '<leader>bd', ':bd!<CR>', { desc = '[B]uffer [D]elete' })
+vim.keymap.set('n', '<Tab>', ':bnext<CR>', { desc = '[B]uffer [N]ext' })
+vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', { desc = '[B]uffer [P]revious' })
+
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
 
@@ -322,6 +328,7 @@ require('lazy').setup({
         ['<leader>ga'] = { name = '[G]it [A]dd', _ = 'which_key_ignore' },
         ['<leader>gc'] = { name = '[G]it [C]ommit', _ = 'which_key_ignore' },
         ['<leader>gs'] = { name = '[G]it [S]earch', _ = 'which_key_ignore' },
+        ['<leader>b'] = { name = '[B]uffer', _ = 'which_key_ignore' },
       }
       -- visual mode
       require('which-key').register({
