@@ -102,6 +102,10 @@ vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Navigate to right split' })
 vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Navigate to bottom split' })
 vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Navigate to top split' })
 
+-- Scrolling remap (Pimeagen), keeps the cursor in the middle of the screen
+vim.keymap.set('n', '<C-u>', '<C-u>zz')
+vim.keymap.set('n', '<C-d>', '<C-d>zz')
+
 -- Set to true if you have a Nerd Font installed and selected in the terminal
 vim.g.have_nerd_font = false
 
