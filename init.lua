@@ -162,6 +162,12 @@ vim.opt.cursorline = true
 -- Minimal number of screen lines to keep above and below the cursor.
 vim.opt.scrolloff = 5
 
+-- Spell checking
+-- Note that in order to download the spell files for other languages than en,
+-- netrw is needed. So don't deactivate it.
+vim.opt.spelllang = 'en,fr'
+vim.keymap.set('n', '<leader>ts', ':set invspell<CR>', { desc = '[T]oggle [S]pell checking' })
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
@@ -420,7 +426,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>gst', builtin.git_stash, { desc = '[G]it [S]earch S[t]ash' })
 
       -- Treesitter
-      vim.keymap.set('n', '<leader>ts', builtin.treesitter, { desc = '[T]ree[S]itter' })
+      vim.keymap.set('n', '<leader>tt', builtin.treesitter, { desc = '[T]oggle [T]reesitter' })
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
@@ -974,6 +980,7 @@ require('lazy').setup({
     'stevearc/oil.nvim',
     lazy = false,
     opts = {
+      default_file_explorer = false, -- I still want netrw
       columns = {
         'icon',
         -- 'permissions',
