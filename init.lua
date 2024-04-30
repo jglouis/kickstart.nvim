@@ -96,12 +96,6 @@ vim.keymap.set('n', '<leader>bd', ':bd!<CR>', { desc = '[B]uffer [D]elete' })
 vim.keymap.set('n', '<Tab>', ':bnext<CR>', { desc = '[B]uffer [N]ext' })
 vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', { desc = '[B]uffer [P]revious' })
 
--- Split navigation
-vim.keymap.set('n', '<C-h>', '<C-w>h', { desc = 'Navigate to left split' })
-vim.keymap.set('n', '<C-l>', '<C-w>l', { desc = 'Navigate to right split' })
-vim.keymap.set('n', '<C-j>', '<C-w>j', { desc = 'Navigate to bottom split' })
-vim.keymap.set('n', '<C-k>', '<C-w>k', { desc = 'Navigate to top split' })
-
 -- Scrolling remap (Pimeagen), keeps the cursor in the middle of the screen
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
