@@ -1146,6 +1146,22 @@ require('lazy').setup({
       require('fFHighlight').setup()
     end,
   },
+  {
+    'saecki/crates.nvim',
+    dependencies = 'hrsh7th/nvim-cmp',
+    ft = { 'toml' },
+    config = function(_, opts)
+      local crates = require 'crates'
+      crates.setup(opts)
+      require('cmp').setup.buffer {
+        sources = { { name = 'crates' } },
+      }
+      vim.keymap.set('n', '<leader>cu', function()
+        crates.upgrade_all_crates()
+      end, { desc = '[C]rates [U]pgrade' })
+      crates.show()
+    end,
+  },
   -- The following two comments only work if you have downloaded the kickstart repo, not just copy pasted the
   -- init.lua. If you want these files, they are in the repository, so you can just download them and
   -- place them in the correct locations.
