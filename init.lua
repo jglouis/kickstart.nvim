@@ -705,6 +705,7 @@ require('lazy').setup({
 
       vim.keymap.set('n', '<leader>cr', ':!cargo run<CR>', { desc = '[C]argo [R]un' })
       vim.keymap.set('n', '<leader>ct', ':!cargo test<CR>', { desc = '[C]argo [T]est' })
+      vim.keymap.set('n', '<leader>cc', ':!cargo clippy<CR>', { desc = '[C]argo [C]lippy' })
 
       local gopls = servers['gopls']
       gopls.capabilities = vim.tbl_deep_extend('force', {}, capabilities, gopls.capabilities or {})
