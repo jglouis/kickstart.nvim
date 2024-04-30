@@ -1091,6 +1091,14 @@ require('lazy').setup({
       require('orgmode').setup {
         org_agenda_files = '~/org-roam/**/*',
         org_default_notes_file = '~/org-roam/refile.org',
+        mappings = {
+          org = {
+            -- For some reason <C-Space is cannot be remapped on Windows
+            -- It seem to be already taken by cmp but it seems to be
+            -- working fine on Linux and MacOsX.
+            org_toggle_checkbox = { '<C-Space>', '<Space>x' },
+          },
+        },
       }
     end,
   },
