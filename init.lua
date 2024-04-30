@@ -251,6 +251,35 @@ if not vim.loop.fs_stat(lazypath) then
 end ---@diagnostic disable-next-line: undefined-field
 vim.opt.rtp:prepend(lazypath)
 
+-- icons for nvim-cmp
+local kind_icons = {
+  Text = '',
+  Method = '󰆧',
+  Function = '󰊕',
+  Constructor = '',
+  Field = '󰇽',
+  Variable = '󰂡',
+  Class = '󰠱',
+  Interface = '',
+  Module = '',
+  Property = '󰜢',
+  Unit = '',
+  Value = '󰎠',
+  Enum = '',
+  Keyword = '󰌋',
+  Snippet = '',
+  Color = '󰏘',
+  File = '󰈙',
+  Reference = '',
+  Folder = '󰉋',
+  EnumMember = '',
+  Constant = '󰏿',
+  Struct = '',
+  Event = '',
+  Operator = '󰆕',
+  TypeParameter = '󰅲',
+}
+
 -- [[ Configure and install plugins ]]
 --
 --  To check the current status of your plugins, run
@@ -797,12 +826,13 @@ require('lazy').setup({
         -- I had to temove the 'menu' portion from the comp pop up because
         -- it was taking too much space.
         formatting = {
-          fields = { 'abbr', 'kind' },
+          fields = { 'kind', 'abbr', 'kind' },
           expandable_indicator = false,
           format = function(_, vim_item)
             -- vim_item.abbr = string.sub(vim_item.abbr, 1, 10)
             vim_item.menu = ''
             -- vim_item.kind = string.sub(vim_item.kind, 1, 10)
+            vim_item.kind = string.format('%s %s', kind_icons[vim_item.kind], vim_item.kind)
             return vim_item
           end,
         },
