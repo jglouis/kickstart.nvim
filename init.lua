@@ -1087,6 +1087,9 @@ require('lazy').setup({
     event = 'VeryLazy',
     ft = { 'org' },
     config = function()
+      -- conceal links
+      vim.opt.conceallevel = 2
+      vim.opt.concealcursor = 'nc'
       -- Setup orgmode
       require('orgmode').setup {
         org_agenda_files = '~/org-roam/**/*',
