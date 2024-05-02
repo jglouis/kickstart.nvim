@@ -173,11 +173,12 @@ vim.opt.scrolloff = 5
 -- Note that in order to download the spell files for other languages than en,
 -- netrw is needed. So don't deactivate it.
 vim.opt.spelllang = 'en,fr'
-vim.keymap.set('n', '<leader>ts', ':set invspell<CR>', { desc = '[T]oggle [S]pell checking' })
+
 vim.api.nvim_create_autocmd('VimEnter', {
   callback = function()
-    vim.cmd 'mkspell! spell/fr.utf-8.add'
-    vim.cmd 'mkspell! spell/en.utf-8.add'
+    local config_dir = vim.fn.stdpath 'config'
+    vim.cmd('mkspell! ' .. config_dir .. '/spell/fr.utf-8.add')
+    vim.cmd('mkspell! ' .. config_dir .. '/spell/en.utf-8.add')
   end,
 })
 
