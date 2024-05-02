@@ -821,7 +821,7 @@ require('lazy').setup({
         -- I had to temove the 'menu' portion from the comp pop up because
         -- it was taking too much space.
         formatting = {
-          fields = { 'kind', 'abbr', 'kind' },
+          fields = { 'abbr', 'kind' },
           expandable_indicator = false,
           format = function(_, vim_item)
             -- vim_item.abbr = string.sub(vim_item.abbr, 1, 10)
