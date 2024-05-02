@@ -806,6 +806,19 @@ require('lazy').setup({
       local luasnip = require 'luasnip'
       luasnip.config.setup {}
 
+      -- Add keymap for toggling auto completion.
+      local cmp_enabled = true
+      local toggle_auto_complete = function()
+        if cmp_enabled then
+          cmp.setup.buffer { enabled = false }
+          cmp_enabled = false
+        else
+          cmp.setup.buffer { enabled = true }
+          cmp_enabled = true
+        end
+      end
+      vim.keymap.set('n', '<leader>tc', toggle_auto_complete, { desc = '[T]oggle [C]ompletion' })
+
       cmp.setup {
         snippet = {
           expand = function(args)
