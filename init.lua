@@ -177,6 +177,12 @@ vim.opt.scrolloff = 5
 -- netrw is needed. So don't deactivate it.
 vim.opt.spelllang = 'en,fr'
 vim.keymap.set('n', '<leader>ts', ':set invspell<CR>', { desc = '[T]oggle [S]pell checking' })
+vim.api.nvim_create_autocmd('VimEnter', {
+  callback = function()
+    vim.cmd 'mkspell! spell/fr.utf-8.add'
+    vim.cmd 'mkspell! spell/en.utf-8.add'
+  end,
+})
 
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
