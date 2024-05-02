@@ -176,9 +176,11 @@ vim.opt.spelllang = 'en,fr'
 
 vim.api.nvim_create_autocmd('VimEnter', {
   callback = function()
+    local languages = vim.opt.spelllang:get()
     local config_dir = vim.fn.stdpath 'config'
-    vim.cmd('mkspell! ' .. config_dir .. '/spell/fr.utf-8.add')
-    vim.cmd('mkspell! ' .. config_dir .. '/spell/en.utf-8.add')
+    for _, lang in ipairs(languages) do
+      vim.cmd('mkspell! ' .. config_dir .. '/spell/' .. lang .. '.utf-8.add')
+    end
   end,
 })
 
