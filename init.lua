@@ -1144,9 +1144,8 @@ require('lazy').setup({
     ft = { 'org' },
     config = function()
       -- Set conceallevel for org files
-      vim.cmd [[
-  autocmd FileType org setlocal conceallevel=2 | setlocal concealcursor=nc
-]]
+      vim.cmd ' autocmd FileType org setlocal conceallevel=2 | setlocal concealcursor=nc!'
+      --
       -- Setup orgmode
       require('orgmode').setup {
         org_agenda_files = '~/org-roam/**/*',
