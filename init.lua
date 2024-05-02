@@ -184,6 +184,8 @@ vim.api.nvim_create_autocmd('VimEnter', {
   end,
 })
 
+vim.keymap.set('n', '<leader>ts', ':set invspell<CR>', { desc = '[T]oggle [S]pell checking' })
+
 -- [[ Basic Keymaps ]]
 --  See `:help vim.keymap.set()`
 
