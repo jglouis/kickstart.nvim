@@ -461,6 +461,7 @@ require('lazy').setup({
 
       -- Git integration
       vim.keymap.set('n', '<leader>gcs', builtin.git_commits, { desc = '[G]it [C]ommits [S]earch' })
+      vim.keymap.set('n', '<leader>gsc', builtin.git_commits, { desc = '[G]it [S]earch [C]ommits' })
       vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc = '[G]it [B]ranches' })
       vim.keymap.set('n', '<leader>gss', builtin.git_status, { desc = '[G]it [S]earch [S]tatus' })
       vim.keymap.set('n', '<leader>gst', builtin.git_stash, { desc = '[G]it [S]earch S[t]ash' })
