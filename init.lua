@@ -1102,7 +1102,7 @@ require('lazy').setup({
       extensions = {
         undo = {
           use_delta = true,
-          side_by_side = true,
+          side_by_side = false,
           -- layout_strategy = 'vertical',
           -- layout_config = {
           --   preview_height = 0.8,
