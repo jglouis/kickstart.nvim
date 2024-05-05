@@ -453,6 +453,17 @@ require('lazy').setup({
       -- Enable Telescope extensions if they are installed
       pcall(require('telescope').load_extension, 'fzf')
       pcall(require('telescope').load_extension, 'ui-select')
+      local previewers = require 'telescope.previewers'
+
+      local delta = previewers.new_termopen_previewer {
+        get_command = function(entry)
+          if entry.status == '??' or 'A ' then
+            return { 'git', 'diff', entry.value }
+          end
+
+          return { 'git', 'diff', entry.value .. '^!' }
+        end,
+      }
 
       -- See `:help telescope.builtin`
       local builtin = require 'telescope.builtin'
@@ -468,11 +479,19 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader><leader>', builtin.buffers, { desc = '[ ] Find existing buffers' })
 
       -- Git integration
-      vim.keymap.set('n', '<leader>gcs', builtin.git_commits, { desc = '[G]it [C]ommits [S]earch' })
-      vim.keymap.set('n', '<leader>gsc', builtin.git_commits, { desc = '[G]it [S]earch [C]ommits' })
+      vim.keymap.set('n', '<leader>gcs', function()
+        builtin.git_commits { previewer = delta }
+      end, { desc = '[G]it [C]ommits [S]earch' })
+      vim.keymap.set('n', '<leader>gsc', function()
+        builtin.git_commits { previewer = delta }
+      end, { desc = '[G]it [S]earch [C]ommits' })
       vim.keymap.set('n', '<leader>gb', builtin.git_branches, { desc = '[G]it [B]ranches' })
-      vim.keymap.set('n', '<leader>gss', builtin.git_status, { desc = '[G]it [S]earch [S]tatus' })
-      vim.keymap.set('n', '<leader>gst', builtin.git_stash, { desc = '[G]it [S]earch S[t]ash' })
+      vim.keymap.set('n', '<leader>gss', function()
+        builtin.git_status { previewer = delta }
+      end, { desc = '[G]it [S]earch [S]tatus' })
+      vim.keymap.set('n', '<leader>gst', function()
+        builtin.git_stash { previewer = delta }
+      end, { desc = '[G]it [S]earch S[t]ash' })
 
       -- Treesitter
       vim.keymap.set('n', '<leader>tt', builtin.treesitter, { desc = '[T]oggle [T]reesitter' })
