@@ -1039,7 +1039,7 @@ require('lazy').setup({
     'tpope/vim-fugitive',
     opt = {},
     config = function()
-      vim.keymap.set('n', '<leader>gg', ':Git<CR>', { desc = '[G]it [G]ood status' })
+      -- vim.keymap.set('n', '<leader>gg', ':Git<CR>', { desc = '[G]it [G]ood status' })
       vim.keymap.set('n', '<leader>gd', ':Git diff<CR>', { desc = '[G]it [D]iff with HEAD' })
       vim.keymap.set('n', '<leader>gm', ':Git mergetool<CR>', { desc = '[G]it [M]ergeTool' })
       vim.keymap.set('n', '<leader>gB', ':Git blame<CR>', { desc = '[G]it [B]lame' })
@@ -1049,6 +1049,19 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>gcc', ':Git commit <CR>', { desc = '[G]it [C]ommit [C]urrent' })
       vim.keymap.set('n', '<leader>gp', ':Git push<CR>', { desc = '[G]it [P]ush' })
       vim.keymap.set('n', '<leader>gP', ':Git pull<CR>', { desc = '[G]it [P]ull' })
+    end,
+  },
+  {
+    'NeogitOrg/neogit',
+    lazy = false,
+    dependencies = {
+      'nvim-lua/plenary.nvim', -- required
+      'sindrets/diffview.nvim', -- optional - Diff integration
+      'nvim-telescope/telescope.nvim', -- optional
+    },
+    config = function()
+      vim.keymap.set('n', '<leader>gg', ':Neogit<CR>', { desc = '[G]it [G]ood status' })
+      require('neogit').setup {}
     end,
   },
   {
