@@ -1186,6 +1186,9 @@ require('lazy').setup({
         },
       }
     end,
+    config = function()
+      vim.keymap.set('n', '<leader>x', ':VimwikiToggleListItem<CR>', { desc = 'Toggle Vimwiki Checkbox' })
+    end,
   },
   {
     'kevinhwang91/nvim-fFHighlight',
