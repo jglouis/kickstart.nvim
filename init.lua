@@ -1080,14 +1080,20 @@ require('lazy').setup({
   },
   {
     'NeogitOrg/neogit',
-    lazy = false,
+    lazy = true, -- setting up to false mess up the NeoVim startup screen
     dependencies = {
       'nvim-lua/plenary.nvim', -- required
       'sindrets/diffview.nvim', -- optional - Diff integration
       'nvim-telescope/telescope.nvim', -- optional
     },
+    init = function()
+      vim.keymap.set('n', '<leader>gg', function()
+        -- Triggers NeoVim configuration
+        require 'neogit'
+        vim.cmd 'Neogit'
+      end, { desc = '[G]it [G]ood status' })
+    end,
     config = function()
-      vim.keymap.set('n', '<leader>gg', ':Neogit<CR>', { desc = '[G]it [G]ood status' })
       require('neogit').setup {}
     end,
   },
