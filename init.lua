@@ -1175,24 +1175,14 @@ require('lazy').setup({
     end,
   },
   {
-    'nvim-orgmode/orgmode',
-    event = 'VeryLazy',
-    ft = { 'org' },
-    config = function()
-      -- Set conceallevel for org files
-      vim.cmd ' autocmd FileType org setlocal conceallevel=2 | setlocal concealcursor=nc!'
-      --
-      -- Setup orgmode
-      require('orgmode').setup {
-        org_agenda_files = '~/org-roam/**/*',
-        org_default_notes_file = '~/org-roam/refile.org',
-        mappings = {
-          org = {
-            -- For some reason <C-Space is cannot be remapped on Windows
-            -- It seem to be already taken by cmp but it seems to be
-            -- working fine on Linux and MacOsX.
-            org_toggle_checkbox = { '<C-Space>', '<Space>x' },
-          },
+    'vimwiki/vimwiki',
+    init = function()
+      vim.g.vimwiki_global_ext = 0
+      vim.g.vimwiki_list = {
+        {
+          path = '~/vimwiki',
+          syntax = 'markdown',
+          ext = '.md',
         },
       }
     end,
