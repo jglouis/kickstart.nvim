@@ -1178,6 +1178,9 @@ require('lazy').setup({
     'vimwiki/vimwiki',
     init = function()
       vim.g.vimwiki_global_ext = 0
+      vim.g.vimwiki_key_mappings = {
+        headers = 0,
+      }
       vim.g.vimwiki_list = {
         {
           path = '~/vimwiki',
