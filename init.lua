@@ -244,6 +244,8 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
   end,
 })
 
+local vimwiki_path = '~/vimwiki'
+
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -518,6 +520,11 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
+
+      -- Shortcut for searching your Vimwiki configuration files
+      vim.keymap.set('n', '<leader>ws', function()
+        builtin.find_files { cwd = vimwiki_path }
+      end, { desc = '[W]iki [S]earch files' })
     end,
   },
 
@@ -1182,7 +1189,7 @@ require('lazy').setup({
       }
       vim.g.vimwiki_list = {
         {
-          path = '~/vimwiki',
+          path = vimwiki_path,
           syntax = 'markdown',
           ext = '.md',
         },
