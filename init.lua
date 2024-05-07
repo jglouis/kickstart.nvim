@@ -1202,7 +1202,7 @@ require('lazy').setup({
       }
     end,
     config = function()
-      vim.keymap.set('n', '<leader>x', ':VimwikiToggleListItem<CR>', { desc = 'Toggle Vimwiki Checkbox' })
+      -- vim.keymap.set('n', '<leader>x', ':VimwikiToggleListItem<CR>', { desc = 'Toggle Vimwiki Checkbox' })
     end,
   },
   {
@@ -1220,6 +1220,13 @@ require('lazy').setup({
         load = {
           ['core.defaults'] = {},
           ['core.concealer'] = {},
+          ['core.keybinds'] = {
+            config = {
+              hook = function(keybinds)
+                keybinds.remap_key('norg', 'n', '<C-Space>', '<leader>x')
+              end,
+            },
+          },
           ['core.dirman'] = {
             config = {
               workspaces = {
