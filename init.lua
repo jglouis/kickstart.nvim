@@ -244,7 +244,6 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
   end,
 })
 
-local vimwiki_path = '~/vimwiki'
 local neorg_path = '~/neorg'
 
 -- [[ Install `lazy.nvim` plugin manager ]]
@@ -521,11 +520,6 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
-
-      -- Shortcut for searching your Vimwiki notes
-      vim.keymap.set('n', '<leader>ws', function()
-        builtin.find_files { cwd = vimwiki_path }
-      end, { desc = '[W]iki [S]earch notes' })
 
       -- Shortcut for searching your Neorg configuration notes
       vim.keymap.set('n', '<leader>ns', function()
@@ -1190,25 +1184,6 @@ require('lazy').setup({
       dap.listeners.before.event_exited['dapui_config'] = function()
         dapui.close()
       end
-    end,
-  },
-  {
-    'vimwiki/vimwiki',
-    init = function()
-      vim.g.vimwiki_global_ext = 0
-      vim.g.vimwiki_key_mappings = {
-        headers = 0,
-      }
-      vim.g.vimwiki_list = {
-        {
-          path = vimwiki_path,
-          syntax = 'markdown',
-          ext = '.md',
-        },
-      }
-    end,
-    config = function()
-      -- vim.keymap.set('n', '<leader>x', ':VimwikiToggleListItem<CR>', { desc = 'Toggle Vimwiki Checkbox' })
     end,
   },
   {
