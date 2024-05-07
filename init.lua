@@ -1096,7 +1096,7 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>gg', function()
         -- Triggers NeoVim configuration
         require 'neogit'
-        vim.cmd 'Neogit'
+        vim.cmd 'Neogit cwd=%:p:h' -- Run Neogit on repository from the current file.
       end, { desc = '[G]it [G]ood status' })
     end,
     config = function()
