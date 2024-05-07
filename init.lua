@@ -245,6 +245,7 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
 })
 
 local vimwiki_path = '~/vimwiki'
+local neorg_path = '~/neorg'
 
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
@@ -521,10 +522,15 @@ require('lazy').setup({
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
 
-      -- Shortcut for searching your Vimwiki configuration files
+      -- Shortcut for searching your Vimwiki notes
       vim.keymap.set('n', '<leader>ws', function()
         builtin.find_files { cwd = vimwiki_path }
-      end, { desc = '[W]iki [S]earch files' })
+      end, { desc = '[W]iki [S]earch notes' })
+
+      -- Shortcut for searching your Neorg configuration notes
+      vim.keymap.set('n', '<leader>ns', function()
+        builtin.find_files { cwd = neorg_path }
+      end, { desc = '[N]eorg [S]earch notes' })
     end,
   },
 
