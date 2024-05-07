@@ -1223,8 +1223,9 @@ require('lazy').setup({
           ['core.dirman'] = {
             config = {
               workspaces = {
-                notes = '~/notes',
+                neorg = '~/neorg',
               },
+              default_workspace = 'neorg',
             },
           },
         },
