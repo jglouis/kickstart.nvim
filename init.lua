@@ -1215,7 +1215,14 @@ require('lazy').setup({
     dependencies = { 'luarocks.nvim' },
     lazy = false,
     version = '*', -- Should pin neorg to the latest stable version
-    config = true,
+    config = function()
+      require('neorg').setup {
+        load = {
+          ['core.defaults'] = {},
+          ['core.concealer'] = {},
+        },
+      }
+    end,
   },
   {
     'kevinhwang91/nvim-fFHighlight',
