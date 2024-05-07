@@ -1206,6 +1206,18 @@ require('lazy').setup({
     end,
   },
   {
+    'vhyrro/luarocks.nvim',
+    priority = 1000,
+    config = true,
+  },
+  {
+    'nvim-neorg/neorg',
+    dependencies = { 'luarocks.nvim' },
+    lazy = false,
+    version = '*', -- Should pin neorg to the latest stable version
+    config = true,
+  },
+  {
     'kevinhwang91/nvim-fFHighlight',
     config = function()
       require('fFHighlight').setup()
