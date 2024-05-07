@@ -1232,6 +1232,11 @@ require('lazy').setup({
       }
       vim.wo.foldlevel = 99
       vim.wo.conceallevel = 2
+      require('which-key').register {
+        ['<leader>n'] = { name = '[N]eorg', _ = 'which_key_ignore' },
+      }
+      vim.keymap.set('n', '<leader>ni', ':Neorg index<CR>', { desc = '[N]eorg [I]ndex' })
+      vim.keymap.set('n', '<leader>nr', ':Neorg return<CR>', { desc = '[N]eorg [R]eturn' })
     end,
   },
   {
