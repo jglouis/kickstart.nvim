@@ -525,6 +525,11 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>ns', function()
         builtin.find_files { cwd = neorg_path }
       end, { desc = '[N]eorg [S]earch notes' })
+
+      -- Shortcut for searching your Neorg configuration notes
+      vim.keymap.set('n', '<leader>ng', function()
+        builtin.live_grep { cwd = neorg_path }
+      end, { desc = '[N]eorg [G]rep notes' })
     end,
   },
 
