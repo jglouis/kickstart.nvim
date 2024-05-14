@@ -88,7 +88,7 @@ P.S. You can delete this when you're done too. It's your config now! :)
 -- See `:help mapleader`
 --  NOTE: Must happen before plugins are loaded (otherwise wrong leader will be used)
 vim.g.mapleader = ' '
-vim.g.maplocalleader = ' '
+vim.g.maplocalleader = ','
 
 -- Buffer manipulation
 vim.keymap.set('n', '<leader>bn', ':new<CR>', { desc = '[B]uffer [N]ew' })
@@ -1230,6 +1230,14 @@ require('lazy').setup({
       }
       vim.keymap.set('n', '<leader>ni', ':Neorg index<CR>', { desc = '[N]eorg [I]ndex' })
       vim.keymap.set('n', '<leader>nr', ':Neorg return<CR>', { desc = '[N]eorg [R]eturn' })
+    end,
+  },
+  {
+    'dhruvasagar/vim-table-mode',
+    lazy = false,
+    config = function()
+      -- Use markdown style tables
+      vim.g.table_mode_corner = '|'
     end,
   },
   {
