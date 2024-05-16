@@ -963,6 +963,7 @@ require('lazy').setup({
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
+          { name = 'neorg' },
           {
             name = 'spell',
             option = {
@@ -1219,6 +1220,11 @@ require('lazy').setup({
                 neorg = '~/neorg',
               },
               default_workspace = 'neorg',
+            },
+          },
+          ['core.completion'] = {
+            config = {
+              engine = 'nvim-cmp',
             },
           },
         },
