@@ -174,6 +174,9 @@ vim.opt.scrolloff = 5
 -- netrw is needed. So don't deactivate it.
 vim.opt.spelllang = 'en,fr'
 
+-- Enable inlay hitns from LSP, displating variable types.
+vim.lsp.inlay_hint.enable()
+
 vim.api.nvim_create_autocmd('VimEnter', {
   callback = function()
     local languages = vim.opt.spelllang:get()
