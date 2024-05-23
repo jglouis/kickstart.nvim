@@ -375,6 +375,7 @@ require('lazy').setup({
         ['<leader>gc'] = { name = '[G]it [C]ommit', _ = 'which_key_ignore' },
         ['<leader>gs'] = { name = '[G]it [S]earch', _ = 'which_key_ignore' },
         ['<leader>b'] = { name = '[B]uffer', _ = 'which_key_ignore' },
+        ['<leader>p'] = { name = '[P]ython', _ = 'which_key_ignore' },
       }
       -- visual mode
       require('which-key').register({
@@ -695,7 +696,7 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         gopls = {},
-        -- pyright = {},
+        pyright = {},
         rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -737,6 +738,7 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'lua-language-server',
+        'pyright',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
@@ -754,6 +756,12 @@ require('lazy').setup({
       local gopls = servers['gopls']
       gopls.capabilities = vim.tbl_deep_extend('force', {}, capabilities, gopls.capabilities or {})
       require('lspconfig')['gopls'].setup(gopls)
+
+      local pyright = servers['pyright']
+      pyright.capabilities = vim.tbl_deep_extend('force', {}, capabilities, pyright.capabilities or {})
+      require('lspconfig')['pyright'].setup(pyright)
+
+      vim.keymap.set('n', '<leader>pr', ':!python3 %<CR>', { desc = '[P]ython [R]un' })
 
       require('mason-lspconfig').setup {
         handlers = {
