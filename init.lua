@@ -707,7 +707,7 @@ require('lazy').setup({
       local servers = {
         -- clangd = {},
         gopls = {},
-        pyright = {},
+        pylsp = {},
         rust_analyzer = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
@@ -749,7 +749,7 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'stylua', -- Used to format Lua code
         'lua-language-server',
-        'pyright',
+        'pylsp',
         'isort',
         'black',
       })
@@ -770,9 +770,9 @@ require('lazy').setup({
       gopls.capabilities = vim.tbl_deep_extend('force', {}, capabilities, gopls.capabilities or {})
       require('lspconfig')['gopls'].setup(gopls)
 
-      local pyright = servers['pyright']
-      pyright.capabilities = vim.tbl_deep_extend('force', {}, capabilities, pyright.capabilities or {})
-      require('lspconfig')['pyright'].setup(pyright)
+      local pylsp = servers['pylsp']
+      pylsp.capabilities = vim.tbl_deep_extend('force', {}, capabilities, pylsp.capabilities or {})
+      require('lspconfig')['pylsp'].setup(pylsp)
 
       vim.keymap.set('n', '<leader>pr', ':!python3 %<CR>', { desc = '[P]ython [R]un' })
 
