@@ -4,4 +4,3 @@ test.sh
 nvim
 *.spl
 *.sug
-lazy-lock.json
