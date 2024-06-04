@@ -761,6 +761,7 @@ require('lazy').setup({
         'pylsp',
         'isort',
         'black',
+        'zls',
       })
       require('mason-tool-installer').setup { ensure_installed = ensure_installed }
 
