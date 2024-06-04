@@ -716,6 +716,7 @@ require('lazy').setup({
         gopls = {},
         pylsp = {},
         rust_analyzer = {},
+        zls = {},
         -- ... etc. See `:help lspconfig-all` for a list of all the pre-configured LSPs
         --
         -- Some languages (like typescript) have entire language plugins that can be useful:
@@ -780,6 +781,10 @@ require('lazy').setup({
       local pylsp = servers['pylsp']
       pylsp.capabilities = vim.tbl_deep_extend('force', {}, capabilities, pylsp.capabilities or {})
       require('lspconfig')['pylsp'].setup(pylsp)
+
+      local zls = servers['zls']
+      zls.capabilities = vim.tbl_deep_extend('force', {}, capabilities, zls.capabilities or {})
+      require('lspconfig')['zls'].setup(zls)
 
       vim.keymap.set('n', '<leader>pr', ':!python3 %<CR>', { desc = '[P]ython [R]un' })
 
