@@ -789,8 +789,10 @@ require('lazy').setup({
       zls.capabilities = vim.tbl_deep_extend('force', {}, capabilities, zls.capabilities or {})
       require('lspconfig')['zls'].setup(zls)
 
-      vim.keymap.set('n', '<leader>zr', ':!zig build run<CR>', { desc = '[Z]ig build [R]un' })
-      vim.keymap.set('n', '<leader>zt', ':!zig build test<CR>', { desc = '[Z]ig build [T]est' })
+      vim.keymap.set('n', '<leader>zbr', ':!zig [B]uild run<CR>', { desc = '[Z]ig build [R]un' })
+      vim.keymap.set('n', '<leader>zbt', ':!zig [B]uild test<CR>', { desc = '[Z]ig build [T]est' })
+      vim.keymap.set('n', '<leader>zr', ':!zig run %<CR>', { desc = '[Z]ig [R]un current' })
+      vim.keymap.set('n', '<leader>zt', ':!zig test %<CR>', { desc = '[Z]ig [T]est current' })
 
       require('mason-lspconfig').setup {
         handlers = {
