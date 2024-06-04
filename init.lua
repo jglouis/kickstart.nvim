@@ -174,7 +174,7 @@ vim.opt.scrolloff = 5
 -- netrw is needed. So don't deactivate it.
 vim.opt.spelllang = 'en,fr'
 
--- Make spelling mistakes use underlines instead of undercurl.
+-- HACK: Make spelling mistakes use underlines instead of undercurl.
 -- WezTerm does not automatically translate undercurl to underlines,
 -- which is annoying and completely break spellchecking.
 -- This workaround is opt-in and I only use it on Windows so far.
