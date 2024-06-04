@@ -173,17 +173,24 @@ vim.opt.scrolloff = 5
 -- Note that in order to download the spell files for other languages than en,
 -- netrw is needed. So don't deactivate it.
 vim.opt.spelllang = 'en,fr'
+
 -- Make spelling mistakes use underlines instead of undercurl.
--- Wezterm does not automatically translate undercurl to underlines,
+-- WezTerm does not automatically translate undercurl to underlines,
 -- which is annoying and completely break spellchecking.
-vim.api.nvim_create_autocmd('BufEnter', {
-  callback = function()
-    vim.cmd 'highlight SpellBad gui=underline guisp=Red'
-    vim.cmd 'highlight SpellCap gui=underline guisp=Red'
-    vim.cmd 'highlight SpellLocal gui=underline guisp=Red'
-    vim.cmd 'highlight SpellRare gui=underline guisp=Red'
-  end,
-})
+-- This workaround is opt-in and I only use it on Windows so far.
+-- Add this line in a .ps1 file to have to environment variable set.
+-- $Env:NVIM_SPELL_CHECK_HI='underlines'
+local nvim_spell_check_hi = os.getenv 'NVIM_SPELL_CHECK_HI'
+if nvim_spell_check_hi == 'underlines' then
+  vim.api.nvim_create_autocmd('BufEnter', {
+    callback = function()
+      vim.cmd 'highlight SpellBad gui=underline guisp=Red'
+      vim.cmd 'highlight SpellCap gui=underline guisp=Red'
+      vim.cmd 'highlight SpellLocal gui=underline guisp=Red'
+      vim.cmd 'highlight SpellRare gui=underline guisp=Red'
+    end,
+  })
+end
 
 -- Enable inlay hitns from LSP, displating variable types.
 vim.lsp.inlay_hint.enable()
