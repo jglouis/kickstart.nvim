@@ -394,6 +394,7 @@ require('lazy').setup({
         ['<leader>gs'] = { name = '[G]it [S]earch', _ = 'which_key_ignore' },
         ['<leader>b'] = { name = '[B]uffer', _ = 'which_key_ignore' },
         ['<leader>p'] = { name = '[P]ython', _ = 'which_key_ignore' },
+        ['<leader>z'] = { name = '[Z]ig', _ = 'which_key_ignore' },
       }
       -- visual mode
       require('which-key').register({
@@ -782,11 +783,14 @@ require('lazy').setup({
       pylsp.capabilities = vim.tbl_deep_extend('force', {}, capabilities, pylsp.capabilities or {})
       require('lspconfig')['pylsp'].setup(pylsp)
 
+      vim.keymap.set('n', '<leader>pr', ':!python3 %<CR>', { desc = '[P]ython [R]un' })
+
       local zls = servers['zls']
       zls.capabilities = vim.tbl_deep_extend('force', {}, capabilities, zls.capabilities or {})
       require('lspconfig')['zls'].setup(zls)
 
-      vim.keymap.set('n', '<leader>pr', ':!python3 %<CR>', { desc = '[P]ython [R]un' })
+      vim.keymap.set('n', '<leader>zr', ':!zig build run<CR>', { desc = '[Z]ig build [R]un' })
+      vim.keymap.set('n', '<leader>zt', ':!zig build test<CR>', { desc = '[Z]ig build [T]est' })
 
       require('mason-lspconfig').setup {
         handlers = {
