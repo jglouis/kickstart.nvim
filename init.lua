@@ -192,7 +192,7 @@ if nvim_spell_check_hi == 'underlines' then
   })
 end
 
--- Enable inlay hitns from LSP, displating variable types.
+-- Enable inlay hints from LSP, displaying variable types.
 vim.lsp.inlay_hint.enable()
 
 vim.api.nvim_create_autocmd('VimEnter', {
