@@ -1270,6 +1270,7 @@ require('lazy').setup({
               engine = 'nvim-cmp',
             },
           },
+          ['core.export'] = {},
         },
       }
       vim.wo.foldlevel = 99
