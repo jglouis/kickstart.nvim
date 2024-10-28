@@ -1262,17 +1262,12 @@ require('lazy').setup({
     lazy = false,
     version = '*', -- Should pin neorg to the latest stable version
     config = function()
+      vim.keymap.set('n', '<leader>x', '<Plug>(neorg.qol.todo-items.todo.task-cycle)', { desc = 'Neorg cycle check state' })
       require('neorg').setup {
         load = {
           ['core.defaults'] = {},
           ['core.concealer'] = {},
-          ['core.keybinds'] = {
-            config = {
-              hook = function(keybinds)
-                keybinds.remap_key('norg', 'n', '<C-Space>', '<leader>x')
-              end,
-            },
-          },
+          ['core.keybinds'] = {},
           ['core.dirman'] = {
             config = {
               workspaces = {
