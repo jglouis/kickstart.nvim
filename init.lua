@@ -541,6 +541,11 @@ require('lazy').setup({
 
       -- Treesitter
       vim.keymap.set('n', '<leader>tt', builtin.treesitter, { desc = '[T]oggle [T]reesitter' })
+      vim.filetype.add {
+        extension = {
+          mtheme = 'ini', -- Some MCL file extension that reads like an ini file
+        },
+      }
 
       -- Slightly advanced example of overriding default behavior and theme
       vim.keymap.set('n', '<leader>/', function()
