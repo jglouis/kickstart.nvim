@@ -273,8 +273,6 @@ vim.api.nvim_create_autocmd({ 'FileType' }, {
   end,
 })
 
-local neorg_path = '~/neorg'
-
 -- [[ Install `lazy.nvim` plugin manager ]]
 --    See `:help lazy.nvim.txt` or https://github.com/folke/lazy.nvim for more info
 local lazypath = vim.fn.stdpath 'data' .. '/lazy/lazy.nvim'
@@ -589,16 +587,6 @@ require('lazy').setup({
       vim.keymap.set('n', '<leader>sn', function()
         builtin.find_files { cwd = vim.fn.stdpath 'config' }
       end, { desc = '[S]earch [N]eovim files' })
-
-      -- Shortcut for searching your Neorg configuration notes
-      vim.keymap.set('n', '<leader>ns', function()
-        builtin.find_files { cwd = neorg_path }
-      end, { desc = '[N]eorg [S]earch notes' })
-
-      -- Shortcut for searching your Neorg configuration notes
-      vim.keymap.set('n', '<leader>ng', function()
-        builtin.live_grep { cwd = neorg_path }
-      end, { desc = '[N]eorg [G]rep notes' })
     end,
   },
 
@@ -1052,7 +1040,6 @@ require('lazy').setup({
           { name = 'nvim_lsp' },
           { name = 'luasnip' },
           { name = 'path' },
-          { name = 'neorg' },
           {
             name = 'spell',
             option = {
@@ -1282,11 +1269,6 @@ require('lazy').setup({
     end,
   },
   {
-    'vhyrro/luarocks.nvim',
-    priority = 1000,
-    config = true,
-  },
-  {
     'nvim-orgmode/orgmode',
     event = 'VeryLazy',
     ft = { 'org' },
@@ -1320,44 +1302,6 @@ require('lazy').setup({
       }
     end,
   },
-  -- {
-  --   'nvim-neorg/neorg',
-  --   dependencies = { 'luarocks.nvim' },
-  --   lazy = false,
-  --   version = '*', -- Should pin neorg to the latest stable version
-  --   config = function()
-  --     vim.keymap.set('n', '<leader>x', '<Plug>(neorg.qol.todo-items.todo.task-cycle)', { desc = 'Neorg cycle check state' })
-  --     require('neorg').setup {
-  --       load = {
-  --         ['core.defaults'] = {},
-  --         ['core.concealer'] = {},
-  --         ['core.keybinds'] = {},
-  --         ['core.dirman'] = {
-  --           config = {
-  --             workspaces = {
-  --               neorg = '~/neorg',
-  --             },
-  --             default_workspace = 'neorg',
-  --           },
-  --         },
-  --         ['core.completion'] = {
-  --           config = {
-  --             engine = 'nvim-cmp',
-  --           },
-  --         },
-  --         ['core.export'] = {},
-  --       },
-  --     }
-  -- vim.wo.foldlevel = 99
-  -- vim.wo.conceallevel = 2
-  --     require('which-key').add {
-  --       { '<leader>n', group = '[N]eorg' },
-  --       { '<leader>n_', hidden = true },
-  --     }
-  --     vim.keymap.set('n', '<leader>ni', ':Neorg index<CR>', { desc = '[N]eorg [I]ndex' })
-  --     vim.keymap.set('n', '<leader>nr', ':Neorg return<CR>', { desc = '[N]eorg [R]eturn' })
-  --   end,
-  -- },
   {
     'dhruvasagar/vim-table-mode',
     lazy = false,
