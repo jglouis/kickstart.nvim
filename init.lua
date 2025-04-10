@@ -179,6 +179,9 @@ vim.opt.scrolloff = 2
 -- netrw is needed. So don't deactivate it.
 vim.opt.spelllang = 'en,fr'
 
+vim.wo.foldlevel = 99
+vim.wo.conceallevel = 2
+
 -- HACK: Make spelling mistakes use underlines instead of undercurl.
 -- WezTerm does not automatically translate undercurl to underlines,
 -- which is annoying and completely break spellchecking.
@@ -1284,43 +1287,77 @@ require('lazy').setup({
     config = true,
   },
   {
-    'nvim-neorg/neorg',
-    dependencies = { 'luarocks.nvim' },
-    lazy = false,
-    version = '*', -- Should pin neorg to the latest stable version
+    'nvim-orgmode/orgmode',
+    event = 'VeryLazy',
+    ft = { 'org' },
     config = function()
-      vim.keymap.set('n', '<leader>x', '<Plug>(neorg.qol.todo-items.todo.task-cycle)', { desc = 'Neorg cycle check state' })
-      require('neorg').setup {
-        load = {
-          ['core.defaults'] = {},
-          ['core.concealer'] = {},
-          ['core.keybinds'] = {},
-          ['core.dirman'] = {
-            config = {
-              workspaces = {
-                neorg = '~/neorg',
-              },
-              default_workspace = 'neorg',
-            },
+      -- Setup orgmode
+      require('orgmode').setup {
+        org_agenda_files = '~/orgfiles/**/*',
+        org_default_notes_file = '~/orgfiles/refile.org',
+        org_startup_folded = 'inherit',
+        mappings = {
+          org = {
+            org_toggle_checkbox = '<leader>x',
+            org_open_at_Point = '<CR>',
           },
-          ['core.completion'] = {
-            config = {
-              engine = 'nvim-cmp',
-            },
-          },
-          ['core.export'] = {},
         },
       }
-      vim.wo.foldlevel = 99
-      vim.wo.conceallevel = 2
-      require('which-key').add {
-        { '<leader>n', group = '[N]eorg' },
-        { '<leader>n_', hidden = true },
-      }
-      vim.keymap.set('n', '<leader>ni', ':Neorg index<CR>', { desc = '[N]eorg [I]ndex' })
-      vim.keymap.set('n', '<leader>nr', ':Neorg return<CR>', { desc = '[N]eorg [R]eturn' })
     end,
   },
+  {
+    'chipsenkbeil/org-roam.nvim',
+    tag = '0.1.1',
+    dependencies = {
+      {
+        'nvim-orgmode/orgmode',
+        tag = '0.3.7',
+      },
+    },
+    config = function()
+      require('org-roam').setup {
+        directory = '~/org-roam',
+      }
+    end,
+  },
+  -- {
+  --   'nvim-neorg/neorg',
+  --   dependencies = { 'luarocks.nvim' },
+  --   lazy = false,
+  --   version = '*', -- Should pin neorg to the latest stable version
+  --   config = function()
+  --     vim.keymap.set('n', '<leader>x', '<Plug>(neorg.qol.todo-items.todo.task-cycle)', { desc = 'Neorg cycle check state' })
+  --     require('neorg').setup {
+  --       load = {
+  --         ['core.defaults'] = {},
+  --         ['core.concealer'] = {},
+  --         ['core.keybinds'] = {},
+  --         ['core.dirman'] = {
+  --           config = {
+  --             workspaces = {
+  --               neorg = '~/neorg',
+  --             },
+  --             default_workspace = 'neorg',
+  --           },
+  --         },
+  --         ['core.completion'] = {
+  --           config = {
+  --             engine = 'nvim-cmp',
+  --           },
+  --         },
+  --         ['core.export'] = {},
+  --       },
+  --     }
+  -- vim.wo.foldlevel = 99
+  -- vim.wo.conceallevel = 2
+  --     require('which-key').add {
+  --       { '<leader>n', group = '[N]eorg' },
+  --       { '<leader>n_', hidden = true },
+  --     }
+  --     vim.keymap.set('n', '<leader>ni', ':Neorg index<CR>', { desc = '[N]eorg [I]ndex' })
+  --     vim.keymap.set('n', '<leader>nr', ':Neorg return<CR>', { desc = '[N]eorg [R]eturn' })
+  --   end,
+  -- },
   {
     'dhruvasagar/vim-table-mode',
     lazy = false,
