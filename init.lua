@@ -181,6 +181,7 @@ vim.opt.spelllang = 'en,fr'
 
 vim.wo.foldlevel = 99
 vim.wo.conceallevel = 2
+vim.wo.concealcursor = 'nc'
 
 -- HACK: Make spelling mistakes use underlines instead of undercurl.
 -- WezTerm does not automatically translate undercurl to underlines,
