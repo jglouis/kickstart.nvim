@@ -225,6 +225,10 @@ vim.keymap.set('n', '>d', vim.diagnostic.goto_next, { desc = 'Go to next [D]iagn
 vim.keymap.set('n', '<leader>e', vim.diagnostic.open_float, { desc = 'Show diagnostic [E]rror messages' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
+-- quickfix list navigation CTRL-ALT-J/K
+vim.keymap.set('n', '<C-A-J>', ':cnext<CR>', { desc = 'Go to the next entry in quick fix list' })
+vim.keymap.set('n', '<C-A-K>', ':cprev<CR>', { desc = 'Go to the prev entry in quick fix list' })
+
 -- Exit terminal mode in the builtin terminal with a shortcut that is a bit easier
 -- for people to discover. Otherwise, you normally need to press <C-\><C-n>, which
 -- is not what someone will guess without a bit more experience.
