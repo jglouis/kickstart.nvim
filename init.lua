@@ -1276,9 +1276,10 @@ require('lazy').setup({
     config = function()
       -- Setup orgmode
       require('orgmode').setup {
-        org_agenda_files = '~/orgfiles/**/*',
-        org_default_notes_file = '~/orgfiles/refile.org',
+        org_agenda_files = '~/org-roam/**/*',
+        org_default_notes_file = '~/org-roam/refile.org',
         org_startup_folded = 'inherit',
+        org_todo_keywords = { '[ ]', 'TODO', 'EVENT', 'WAITING', '|', '[X]', 'DONE', 'FINISHED', 'CANCELED' },
         mappings = {
           org = {
             org_toggle_checkbox = '<leader>x',
