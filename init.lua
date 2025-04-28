@@ -550,6 +550,7 @@ require('lazy').setup({
       vim.filetype.add {
         extension = {
           mtheme = 'ini', -- Some MCL file extension that reads like an ini file
+          dpf = 'ini',
         },
       }
       vim.filetype.add {
@@ -732,6 +733,11 @@ require('lazy').setup({
               vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
             end, '[T]oggle Inlay [H]ints')
           end
+
+          vim.diagnostic.config {
+            virtual_lines = true,
+            virtual_text = false,
+          }
         end,
       })
 
