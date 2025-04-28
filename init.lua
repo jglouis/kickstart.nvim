@@ -548,6 +548,7 @@ require('lazy').setup({
       vim.filetype.add {
         extension = {
           mtheme = 'ini', -- Some MCL file extension that reads like an ini file
+          dpf = 'ini',
         },
       }
       vim.filetype.add {
