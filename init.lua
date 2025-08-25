@@ -738,6 +738,10 @@ require('lazy').setup({
             virtual_lines = true,
             virtual_text = false,
           }
+          map('<leader>tv', function()
+            local new_config = not vim.diagnostic.config().virtual_lines
+            vim.diagnostic.config { virtual_lines = new_config }
+          end, '[T]oggle [V]irtual lines')
         end,
       })
 
