@@ -178,6 +178,20 @@ vim.opt.scrolloff = 2
 -- Note that in order to download the spell files for other languages than en,
 -- netrw is needed. So don't deactivate it.
 vim.opt.spelllang = 'en,fr'
+local uname = vim.loop.os_uname()
+local spell_path
+
+if uname.sysname == 'Windows_NT' then
+  -- Windows path (use forward slashes or double backslashes)
+  -- $USERPROFILE is the Windows equivalent of $HOME
+  local home = os.getenv 'USERPROFILE'
+  spell_path = home .. '\\AppData\\Local\\nvim\\spell\\en.utf-8.add'
+else
+  -- Linux/macOS path
+  local home = os.getenv 'HOME'
+  spell_path = home .. '/.config/nvim/spell/en.utf-8.add'
+end
+vim.opt.spellfile = spell_path
 
 -- HACK: Make spelling mistakes use underlines instead of undercurl.
 -- WezTerm does not automatically translate undercurl to underlines,
