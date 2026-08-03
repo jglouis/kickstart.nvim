@@ -96,7 +96,7 @@ vim.keymap.set('n', '<leader>bd', ':bd!<CR>', { desc = '[B]uffer [D]elete' })
 vim.keymap.set('n', '<Tab>', ':bnext<CR>', { desc = '[B]uffer [N]ext' })
 vim.keymap.set('n', '<S-Tab>', ':bprevious<CR>', { desc = '[B]uffer [P]revious' })
 
--- Scrolling remap (Pimeagen), keeps the cursor in the middle of the screen
+-- Scrolling remap (Primeagen), keeps the cursor in the middle of the screen
 vim.keymap.set('n', '<C-u>', '<C-u>zz')
 vim.keymap.set('n', '<C-d>', '<C-d>zz')
 
