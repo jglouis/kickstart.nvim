@@ -1023,7 +1023,7 @@ require('lazy').setup({
   },
   {
     'tpope/vim-fugitive',
-    opt = {},
+    opts = {},
     config = function()
       -- vim.keymap.set('n', '<leader>gg', ':Git<CR>', { desc = '[G]it [G]ood status' })
       vim.keymap.set('n', '<leader>gd', ':Git diff<CR>', { desc = '[G]it [D]iff with HEAD' })
