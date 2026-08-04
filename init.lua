@@ -1119,3 +1119,13 @@ do
       desc = '[S]earch [U]ndo history',
     })
 end
+
+-- ============================================================
+-- SECTION 15: telescope-undo
+-- ============================================================
+
+vim.pack.add {
+    gh 'rafamadriz/friendly-snippets',
+}
+
+require('luasnip.loaders.from_vscode').lazy_load()
