@@ -1023,7 +1023,7 @@ do
   -- require 'kickstart.plugins.debug'
   -- require 'kickstart.plugins.indent_line'
   -- require 'kickstart.plugins.lint'
-  -- require 'kickstart.plugins.autopairs'
+  require 'kickstart.plugins.autopairs'
   -- require 'kickstart.plugins.neo-tree'
   -- require 'kickstart.plugins.gitsigns' -- adds gitsigns recommended keymaps
 
@@ -1072,17 +1072,31 @@ end
 do
   vim.pack.add {
     gh('NeogitOrg/neogit'),
-    gh('nvim-lua/plenary.nvim'),
     gh('sindrets/diffview.nvim'),
-    gh('nvim-telescope/telescope.nvim'),
   }
 
   vim.keymap.set('n', '<leader>gg', function()
-    require('neogit')
     vim.cmd('Neogit cwd=%:p:h')
   end, {
-    desc = '[G]it [G]ood status',
-  })
+      desc = '[G]it [G]ood status',
+    })
 
   require('neogit').setup {}
+end
+
+-- ============================================================
+-- SECTION 13: fFHighLight
+-- ============================================================
+
+do
+  vim.pack.add { { src = gh 'kevinhwang91/nvim-fFHighlight' } }
+  require('fFHighlight').setup()
+end
+
+-- ============================================================
+-- SECTION 13: bigFile
+-- ============================================================
+
+do
+  vim.pack.add {{src = gh 'LunarVim/bigfile.nvim'}}
 end
