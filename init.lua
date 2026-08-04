@@ -1045,10 +1045,12 @@ end
 do
   vim.pack.add({
     {
-      src = "https://github.com/stevearc/oil.nvim",
+      src = 'https://github.com/stevearc/oil.nvim',
+      version = vim.version.range 'v2.*',
     },
     {
-      src = "https://github.com/nvim-tree/nvim-web-devicons",
+      src = 'https://github.com/nvim-tree/nvim-web-devicons',
+      version = vim.version.range 'v1.*',
     },
   })
 
@@ -1103,7 +1105,7 @@ end
 -- ============================================================
 
 do
-  vim.pack.add { { src = gh 'kevinhwang91/nvim-fFHighlight' } }
+  vim.pack.add { { src = gh 'kevinhwang91/nvim-fFHighlight', version = 'main' } }
   require('fFHighlight').setup()
 end
 
@@ -1112,7 +1114,7 @@ end
 -- ============================================================
 
 do
-  vim.pack.add {{src = gh 'LunarVim/bigfile.nvim'}}
+  vim.pack.add {{src = gh 'LunarVim/bigfile.nvim', version = 'main'}}
   require('bigfile').setup()
 end
 

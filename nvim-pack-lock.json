@@ -7,7 +7,8 @@
     },
     "bigfile.nvim": {
       "rev": "33eb067e3d7029ac77e081cfe7c45361887a311a",
-      "src": "https://github.com/LunarVim/bigfile.nvim"
+      "src": "https://github.com/LunarVim/bigfile.nvim",
+      "version": "'main'"
     },
     "blink.cmp": {
       "rev": "78336bc89ee5365633bcf754d93df01678b5c08f",
@@ -64,7 +65,8 @@
     },
     "nvim-fFHighlight": {
       "rev": "791a07a59751bda3809d458761ff9eccd54fb542",
-      "src": "https://github.com/kevinhwang91/nvim-fFHighlight"
+      "src": "https://github.com/kevinhwang91/nvim-fFHighlight",
+      "version": "'main'"
     },
     "nvim-lspconfig": {
       "rev": "1c0d8f70dbc8827263eedc3cf7021ceba0f68689",
@@ -77,11 +79,13 @@
     },
     "nvim-web-devicons": {
       "rev": "2ae6958df7ced50baac5035cec0c15799eedfbf7",
-      "src": "https://github.com/nvim-tree/nvim-web-devicons"
+      "src": "https://github.com/nvim-tree/nvim-web-devicons",
+      "version": "1.0.0 - 2.0.0"
     },
     "oil.nvim": {
       "rev": "b73018b75affd13fa38e2fc94ef753b465f770d7",
-      "src": "https://github.com/stevearc/oil.nvim"
+      "src": "https://github.com/stevearc/oil.nvim",
+      "version": "2.0.0 - 3.0.0"
     },
     "plenary.nvim": {
       "rev": "74b06c6c75e4eeb3108ec01852001636d85a932b",
