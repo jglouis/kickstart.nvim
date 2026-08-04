@@ -117,6 +117,8 @@ do
   -- Also add relative line numbers
   vim.o.relativenumber = true
 
+  vim.o.winborder = "rounded"
+
   -- Enable mouse mode, can be useful for resizing splits for example!
   vim.o.mouse = 'a'
 
