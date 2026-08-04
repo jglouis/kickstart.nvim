@@ -1094,9 +1094,28 @@ do
 end
 
 -- ============================================================
--- SECTION 13: bigFile
+-- SECTION 14: bigFile
 -- ============================================================
 
 do
   vim.pack.add {{src = gh 'LunarVim/bigfile.nvim'}}
+  require('bigfile').setup()
+end
+
+-- ============================================================
+-- SECTION 15: telescope-undo
+-- ============================================================
+
+do
+  vim.pack.add {
+    gh 'debugloop/telescope-undo.nvim',
+  }
+
+  require('telescope').load_extension('undo')
+
+  vim.keymap.set('n', '<leader>su', function()
+    require('telescope').extensions.undo.undo()
+  end, {
+      desc = '[S]earch [U]ndo history',
+    })
 end
