@@ -1057,11 +1057,23 @@ do
       "icon",
       "size",
     },
+    float = {
+      padding = 2,
+      max_width = 100,
+      max_height = 30,
+      border = "rounded",
+    },
   })
 
   vim.keymap.set("n", "-", "<CMD>Oil<CR>", {
     desc = "Open parent directory",
   })
+  vim.keymap.set("n", "<leader>o",
+    function()
+      require("oil").open_float()
+    end,{
+      desc = "Open parent directory (float window)"
+    })
 end
 
 
