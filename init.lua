@@ -1145,3 +1145,14 @@ vim.pack.add {
 }
 
 require('luasnip.loaders.from_vscode').lazy_load()
+
+-- ============================================================
+-- SECTION 17: render-markdown
+-- ============================================================
+
+vim.pack.add({
+    'https://github.com/MeanderingProgrammer/render-markdown.nvim',
+})
+require('render-markdown').setup({
+    completions = { lsp = { enabled = true } },
+})
